@@ -18,8 +18,8 @@ export default function Settings(){
           <label>Theme<select value={s.theme} onChange={e=>upd(x=>{x.theme=e.target.value})}><Opts a={[['dark','Dark'],['light','Light']]}/></select></label>
           <label>Text size<select value={s.fs} onChange={e=>upd(x=>{x.fs=+e.target.value})}><Opts a={[[90,'Small'],[100,'Default'],[115,'Large'],[130,'Extra large']]}/></select></label>
           <label className="chk"><input type="checkbox" checked={!!s.hc} onChange={e=>upd(x=>{x.hc=+e.target.checked})}/> High contrast</label>
-          <label>Language<select value={s.lang} onChange={e=>upd(x=>{x.lang=e.target.value})}><Opts a={[['en','English'],['hi','हिन्दी (menu)']]}/></select></label>
-        </div>
+          {/* <label>Language<select value={s.lang} onChange={e=>upd(x=>{x.lang=e.target.value})}><Opts a={[['en','English'],['hi','हिन्दी (menu)']]}/></select></label>
+        */} </div>
         <div className="glass form"><h2>Your data</h2><p className="mu">Everything is stored in this browser. Back it up to move to another device.</p>
           <button className="btn" onClick={()=>dl('gyaan-backup.json',JSON.stringify({lms:L('lms',{}),custom:L('lms_custom',[]),users:L('lms_users',[])}),'application/json')}>Download backup</button>
           <label>Restore from a backup<input type="file" accept=".json" onChange={restore}/></label>

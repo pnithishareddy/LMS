@@ -1,6 +1,6 @@
 import {Link,useParams} from 'react-router-dom';
 import {useStore,pct} from '../store.jsx';
-
+import {Logo} from '../components.jsx';
 export default function Certificates(){
   const {id}=useParams();const {s,all,get}=useStore();
   const done=all.filter(c=>pct(c,s)===100&&(s.scores[c.id]||0)>=70),c=id&&get(id);
@@ -9,7 +9,8 @@ export default function Certificates(){
     return (
       <>
         <div className="cert" style={{'--h':c.hue}}>
-          <div className="brand"><b>ज्ञ</b><span>Gyaan Academy</span></div>
+          <div className="brand"><Logo /></div>
+        
           <p>This certifies that</p><h1>{s.user.name}</h1><p>has successfully completed</p><h2>{c.title}</h2>
           <p>with a final quiz score of {s.scores[c.id]}%</p>
           <div className="sig"><span>{new Date().toLocaleDateString(undefined,{dateStyle:'long'})}<br/><small>Date</small></span><span>{c.inst}<br/><small>Instructor</small></span></div>

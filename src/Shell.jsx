@@ -1,8 +1,8 @@
 import {useEffect,useState} from 'react';
 import {Link,useLocation,useNavigate} from 'react-router-dom';
 import {useStore,lvl} from './store.jsx';
-import {Modal} from './components.jsx';
 
+import {Modal, Logo} from './components.jsx';
 const NAV=[['/','Dashboard','◈','डैशबोर्ड',['/']],['/catalogue','Catalogue','✦','कैटलॉग',['/catalogue','/course','/instructor','/recommend','/flashcards']],['/paths','Paths','⇢','सीखने के पथ',['/paths']],['/my-courses','My Courses','▣','मेरे कोर्स',['/my-courses','/lesson','/quiz']],['/saved','Saved','♥','सेव किए',['/saved']],['/planner','Planner','◷','योजना',['/planner']],['/notes','Notes','✎','नोट्स',['/notes']],['/groups','Groups','☻','समूह',['/groups']],['/leaderboard','Leaderboard','♛','लीडरबोर्ड',['/leaderboard']],['/certificates','Certificates','✪','प्रमाणपत्र',['/certificates']],['/profile','Profile','◉','प्रोफ़ाइल',['/profile']],['/settings','Settings','☰','सेटिंग्स',['/settings']],['/admin','Admin','⚙','एडमिन',['/admin']]];
 
 function Search({close}){
@@ -14,6 +14,7 @@ function Search({close}){
   return (
     <Modal close={close}>
       <input autoFocus value={t} onChange={e=>setT(e.target.value)} placeholder="Search courses, pages or actions" aria-label="Quick search"/>
+      <Link className="brand" to="/"><Logo /></Link>
       <div className="list">
         {cs.map(c=><Link key={c.id} className="les" to={`/course/${c.id}`} onClick={close}><i>{c.emoji}</i><div><b>{c.title}</b><small className="mu">{c.inst}</small></div></Link>)}
         {pg.map(n=><Link key={n[0]} className="les" to={n[0]} onClick={close}><i>{n[2]}</i><div><b>Go to {n[1]}</b></div></Link>)}
@@ -61,7 +62,7 @@ export default function Shell({children}){
       <div className="blob b1"/><div className="blob b2"/>
       <div className="shell">
         <aside className="side">
-          <Link className="brand" to="/"><b>ज्ञ</b><span>Gyaan</span></Link>
+        <div className="brand"><Logo /></div>
           <div className="xp"><small>{lv.name} · {s.xp} XP</small><div className="bar"><i style={{width:lv.pct+'%'}}/></div></div>
           <nav>{NAV.map(n=><Link key={n[0]} to={n[0]} className={on(n)?'on':''}><i>{n[2]}</i><span>{hi?n[3]:n[1]}</span></Link>)}</nav>
           {lc&&lc.lessons[s.last[1]]&&<Link className="resume" to={`/lesson/${lc.id}/${s.last[1]}`}>▶ Resume: {lc.lessons[s.last[1]][0]}</Link>}

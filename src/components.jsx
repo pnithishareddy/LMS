@@ -67,3 +67,15 @@ export const Modal=({close,wide,children})=>(
 export const NF=({text="We couldn't find that"})=>(
   <div className="empty"><h2>{text}</h2><p className="mu">It may have been removed.</p><Link className="btn" to="/catalogue">Browse the catalogue</Link></div>
 );
+export const Logo = () => (
+  <>
+    <b>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+      </svg>
+    </b>
+    <span>Gyaan</span>
+  </>
+);

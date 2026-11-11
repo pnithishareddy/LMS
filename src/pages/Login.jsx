@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {Navigate} from 'react-router-dom';
 import {useStore,L,W} from '../store.jsx';
-
+import {Logo} from '../components.jsx';
 const D={email:'user@gmail.com',pw:'user123',name:'Nithisha'};
 
 export default function Login(){
@@ -22,8 +22,9 @@ export default function Login(){
   return (
     <>
       <div className="blob b1"/><div className="blob b2"/>
+    
       <main className="auth"><div className="glass authc">
-        <div className="brand"><b>ज्ञ</b><span>Gyaan</span></div>
+        <div className="brand"><Logo /></div>
         <h1>Learn something new today</h1><p className="mu">Log in to pick up where you left off.</p>
         <div className="cred"><b>Demo account</b><span>Email: {D.email}</span><span>Password: {D.pw}</span>
           <button type="button" className="btn" onClick={()=>login(D.name,D.email)}>Log in with demo account</button></div>
